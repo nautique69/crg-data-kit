@@ -6,14 +6,14 @@ sudo raspi-config nonint do_boot_behaviour B4
 sudo raspi-config nonint do_wayland W1
 
 sudo apt-get update
-sudo apt-get install unclutter xdotool
+sudo apt-get install -y unclutter xdotool
 
 cat > run-scoredisplay.sh <<EOF
 #!/bin/bash
 
 xset s noblank
 xset s off
-zset -dpms
+xset -dpms
 
 unclutter -idle 0.5 -root &
 
