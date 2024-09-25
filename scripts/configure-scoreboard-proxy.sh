@@ -35,12 +35,12 @@ cat > scoreboard.conf << EOF
 stream {
         server {
                 listen  80;
-                proxy_pass      scoreboard1:80;
+                proxy_pass      scoreboard1.local:80;
         }
 
         server {
                 listen  8080;
-                proxy_pass      scoreboard2:80;
+                proxy_pass      scoreboard2.local:80;
         }
 }
 
@@ -64,12 +64,12 @@ cat > scoreboard.conf.toggle << EOF
 stream {
         server {
                 listen  80;
-                proxy_pass      scoreboard2:80;
+                proxy_pass      scoreboard2.local:80;
         }
 
         server {
                 listen  8080;
-                proxy_pass      scoreboard1:80;
+                proxy_pass      scoreboard1.local:80;
         }
 }
 
