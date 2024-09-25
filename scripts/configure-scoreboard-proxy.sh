@@ -26,6 +26,10 @@ worker_processes auto;
 pid /run/nginx.pid;
 include /etc/nginx/modules-enabled/*.conf;
 include /etc/nginx/conf.d/*.conf;
+
+events {
+        worker_connections 768;
+}
 EOF
 
 sudo rm /etc/nginx/nginx.conf
