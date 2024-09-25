@@ -20,7 +20,7 @@ sudo nginx
 EOF
 chmod +x ./toggle.sh
 
-sudo cat > /etc/nginx/conf.d/scoreboard.conf << EOF
+cat > scoreboard.conf << EOF
 stream {
         server {
                 listen  80;
@@ -49,7 +49,7 @@ http {
 }
 EOF
 
-sudo cat > /etc/nginx/conf.d/scoreboard.conf.toggle << EOF
+cat > scoreboard.conf.toggle << EOF
 stream {
         server {
                 listen  80;
@@ -77,6 +77,9 @@ http {
         }
 }
 EOF
+
+sudo mv ./scoreboard.conf /etc/nginx/conf.d/
+sudo mv ./scoreboard.conf.toggle /etc/nginx/conf.d/
 
 mkdir -p /home/pi/.config/lxsession/LXDE-pi/
 echo "/home/pi/run-proxy.sh" >> /home/pi/.config/lxsession/LXDE-pi/autostart
