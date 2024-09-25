@@ -49,11 +49,11 @@ http {
                 listen 5000;
                 location /live {
                         add_header Content-Type text/plain;
-                        return 200 'scoreboard1';
+                        return 200 'scoreboard1.local';
                 }
                 location /staging {
                         add_header Content-Type text/plain;
-                        return 200 'scoreboard2';
+                        return 200 'scoreboard2.local';
 
                 }
         }
@@ -78,11 +78,11 @@ http {
                 listen 5000;
                 location /live {
                         add_header Content-Type text/plain;
-                        return 200 'scoreboard2';
+                        return 200 'scoreboard2.local';
                 }
                 location /staging {
                         add_header Content-Type text/plain;
-                        return 200 'scoreboard1';
+                        return 200 'scoreboard1.local';
 
                 }
         }
