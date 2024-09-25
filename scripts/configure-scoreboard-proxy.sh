@@ -4,7 +4,7 @@ sudo raspi-config nonint do_boot_behaviour B4
 sudo raspi-config nonint do_wayland W1
 
 sudo apt-get update
-sudo apt-get install -y nginx
+sudo apt-get install -y nginx libnginx-mod-stream
 
 cat > run-proxy.sh <<EOF
 sudo nginx
@@ -19,6 +19,17 @@ sudo mv /etc/nginx/conf.d/scoreboard.conf.tmp /etc/nginx/conf.d/scoreboard.conf.
 sudo nginx
 EOF
 chmod +x ./toggle.sh
+
+cat > nginx.conf << EOF
+user www-data;
+worker_processes auto;
+pid /run/nginx.pid;
+include /etc/nginx/modules-enabled/*.conf;
+include /etc/nginx/conf.d/*.conf;
+EOF
+
+sudo rm /etc/nginx/nginx.conf
+sudo mv ./nginx.conf /etc/nginx/
 
 cat > scoreboard.conf << EOF
 stream {
