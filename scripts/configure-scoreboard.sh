@@ -1,6 +1,6 @@
 #! /bin/bash
 
-readonly CRG_VERSION=v2023.7
+CRG_VERSION="${1:-v2025.5}"
 
 sudo raspi-config nonint do_boot_behaviour B4
 sudo raspi-config nonint do_wayland W1
