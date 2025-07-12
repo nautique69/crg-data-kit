@@ -1,12 +1,19 @@
 #! /bin/bash
 
-CRG_VERSION="${1:-v2025.5}"
-
 sudo raspi-config nonint do_boot_behaviour B4
 sudo raspi-config nonint do_wayland W1
 
 sudo apt-get update
-sudo apt-get install -y default-jdk
+sudo apt-get install -y default-jdk jq
+
+if [ -z "$1" ]
+ then
+ CRG_VERSION="$(curl -s https://api.github.com/repos/rollerderby/scoreboard/releases/latest | jq -r '.tag_name')"
+else
+ CRG_VERSION=$1
+fi
+
+echo "Installing $CRG_VERSION :)"
 
 mkdir ~/scoreboard
 cd scoreboard
