@@ -8,6 +8,7 @@ sudo apt-get install -y default-jdk jq
 
 if [ -z "$1" ]
  then
+ echo "Getting latest version of CRG"
  CRG_VERSION="$(curl -s https://api.github.com/repos/rollerderby/scoreboard/releases/latest | jq -r '.tag_name')"
 else
  CRG_VERSION=$1
